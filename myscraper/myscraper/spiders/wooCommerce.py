@@ -3,8 +3,13 @@ import scrapy
 
 class WoocommerceSpider(scrapy.Spider):
     name = "wooCommerce"
-    allowed_domains = ["araucaniagaming.cl"]
-    start_urls = ["https://araucaniagaming.cl/productos/jcc-pokemon/"]
+    # allowed_domains = ["araucaniagaming.cl"]
+    # start_urls = ["https://araucaniagaming.cl/productos/jcc-pokemon/"]
+
+    def __init__(self, start_url, allowed_domain, *args, **kwargs):
+        super(WoocommerceSpider, self).__init__(*args, **kwargs)
+        self.start_urls = [start_url]
+        self.allowed_domains = [allowed_domain]
 
     def parse(self, response):
         products = response.css('.products li .product-block')
@@ -23,3 +28,5 @@ class WoocommerceSpider(scrapy.Spider):
         for next_page in next_pages:
             if next_page is not None:
                 yield response.follow(next_page, self.parse)
+
+# El stock se puede saber del max input
