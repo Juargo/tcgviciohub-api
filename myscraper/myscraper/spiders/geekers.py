@@ -1,7 +1,7 @@
 import scrapy
 
 
-class EntreJuegos(scrapy.Spider):
+class Geekers(scrapy.Spider):
     name = "geekers"
     allowed_domains = ["geekers.cl"]
     start_urls = ["https://www.geekers.cl/pokemon-tcg"]
