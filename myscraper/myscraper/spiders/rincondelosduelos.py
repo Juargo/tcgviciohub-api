@@ -11,9 +11,9 @@ class ElRinconDeLosDuelos(scrapy.Spider):
 
         for product in products:
             yield{
-                'link': product.css('.product-element-top a::attr(href)').get(),
+                'link': product.css('a::attr(href)').get(),
                 'img': product.css('img::attr(src)').get(),
-                'nombre': product.css('.wd-entities-title a::text').get(),
+                'nombre': product.css('a::text').get(),
                 'stock_label': product.css('.stock-label::text').get(),
                 'precio': product.css('.woocommerce-Price-amount *::text').getall()[1],
             }
