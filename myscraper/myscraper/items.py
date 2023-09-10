@@ -12,8 +12,11 @@ class MyscraperItem(scrapy.Item):
     pass
 
 class ProductItem(scrapy.Item):
-    link = scrapy.Field
-    img = scrapy.Field
-    nombre = scrapy.Field
-    stock_label = scrapy.Field
-    precio = scrapy.Field
+    product_link = scrapy.Field()
+    product_image = scrapy.Field()
+    product_name = scrapy.Field()
+    product_available_label = scrapy.Field()
+    product_price = scrapy.Field()
+    # product_stock_number = scrapy.Field()
+    # product_expansion
+    # product_idioma
