@@ -20,7 +20,7 @@ class DementeGames(scrapy.Spider):
                 product_item['product_link']= product.css('a::attr(href)').get()
                 product_item['product_image']= product.css('img::attr(src)').get()
                 product_item['product_name']= product.css('.h3 a::text').get()
-                product_item['product_available_label']= product.css('.out-of-stock::text').get()
+                product_item['product_available_label']= product_available_label
                 product_item['product_price']= product.css('.price::text').get()
             yield product_item
         # Siguientes páginas
