@@ -23,7 +23,7 @@ class Drawn(scrapy.Spider):
                 product_item['product_name']= product.css('.product-title a::text').get()
                 product_item['product_available_label']= product_available_label
                 product_item['product_price']= product.css('.woocommerce-Price-amount *::text').getall()[1]
-            yield product_item
+                yield product_item
         # Siguientes páginas
         # next_page = response.css('.next::attr(href)').get()
         # if next_page is not None:
