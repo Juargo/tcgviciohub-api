@@ -17,7 +17,9 @@ class Geekers(scrapy.Spider):
             product_item = ProductItem()
             product_available_label=  product.css('.product-block__status::text').get()
             if product_available_label!='Agotado' and product_available_label!='No disponible' :
-                product_item['product_link']= product.css('.product-block__caption-info a::attr(href)').get() # pylint: disable=line-too-long
+                relative_url = product.css('.product-block__caption-info a::attr(href)').get() # pylint: disable=line-too-long
+                product_url = 'https://www.geekers.cl' + relative_url
+                product_item['product_link']= product_url
                 product_item['product_image']= product.css('img::attr(src)').get()
                 product_item['product_name']= product.css('.product-block__name::text').get()
                 product_item['product_available_label']= product_available_label

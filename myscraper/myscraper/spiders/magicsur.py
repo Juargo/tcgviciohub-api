@@ -21,7 +21,7 @@ class MagicSur(scrapy.Spider):
                 product_item['product_image']= product.css('img::attr(data-src)').get()
                 product_item['product_name']=  product.css('.product-title a::text').get()
                 product_item['product_available_label']= product_available_label
-                product_item['product_price']= product.css('.product-price::text').get()
+                product_item['product_price']= product.css('.product-price::text').get().strip()
                 yield product_item
         # Siguientes páginas
         # next_page = response.css('.next::attr(href)').get()

@@ -21,11 +21,10 @@ class EntreJuegos(scrapy.Spider):
                 product_item['product_image']= product.css('img::attr(src)').get()
                 product_item['product_name']= product.css('.product-title a::text').get()
                 product_item['product_available_label']= product_available_label
-                product_item['product_price']= product.css('.price::text').get()
+                product_item['product_price']= product.css('.price::text').get().strip()
                 yield product_item
         # Siguientes páginas
         next_pages = response.css('.page-list>li a::attr(href)').getall()
         for next_page in next_pages:
             if next_page is not None:
                 yield response.follow(next_page, self.parse)
-

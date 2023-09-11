@@ -17,7 +17,9 @@ class StoreDevastation(scrapy.Spider):
             product_item = ProductItem()
             product_available_label= product.css('.product-block__status::text').get()
             if product_available_label!='Agotado':
-                product_item['product_link']=product.css('.productLink::attr(href)').get()
+                relative_url = product.css('.productLink::attr(href)').get()
+                product_url = 'https://www.storedevastation.com' + relative_url
+                product_item['product_link']= product_url
                 product_item['product_image']= product.css('img::attr(src)').get()
                 product_item['product_name']= product.css('.productTitle::text').get().strip()
                 product_item['product_available_label']= product_available_label

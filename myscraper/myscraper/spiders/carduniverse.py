@@ -20,7 +20,9 @@ class Carduniverse(scrapy.Spider):
             if raw_label is not None:
                 product_available_label = raw_label.strip()
             if product_available_label!='Agotado':
-                product_item['product_link']= product.css('::attr(href)').get()
+                relative_url = product.css('::attr(href)').get()
+                product_url = 'https://carduniverse.cl' + relative_url
+                product_item['product_link']= product_url
                 image_url = product.css('img.lazyload::attr(data-src)').get()
                 if image_url and image_url.startswith('//'):
                     image_url = 'https:' + image_url.replace('{width}', '720')
