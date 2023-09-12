@@ -65,6 +65,9 @@ ROBOTSTXT_OBEY = True
 #ITEM_PIPELINES = {
 #    "myscraper.pipelines.MyscraperPipeline": 300,
 #}
+ITEM_PIPELINES = {
+    'myscraper.pipelines.PriceNormalizationPipeline': 1,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

@@ -29,7 +29,14 @@ class Carduniverse(scrapy.Spider):
                 product_item['product_image']= image_url
                 product_item['product_name']= product.css('div.product-card__name::text').get().strip() # pylint: disable=line-too-long
                 product_item['product_available_label']= product_available_label
-                product_item['product_price']= product.css('div.product-card__price span.money::text').get() # pylint: disable=line-too-long
+                # Obtener el precio
+                regular_price = product.css('s.product-card__regular-price span.money::text').get()
+                sale_price = product.css('div.product-card__price span.money:last-child::text').get()
+
+                if sale_price:
+                    product_item['product_price'] = sale_price
+                else:
+                    product_item['product_price'] = regular_price
                 yield product_item
         # Paginación: Encuentra el enlace a la siguiente página y sigue
         next_page = response.css('div.pagination span.next a::attr(href)').get()
