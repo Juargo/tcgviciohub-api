@@ -88,7 +88,7 @@ typing_extensions==4.5.0
 urllib3==1.26.9
 w3lib==2.1.1
 wcwidth==0.2.6
-Werkzeug==2.3.7
+Werkzeug
 wsproto==1.1.0
-yarl==1.9.2
+yarl
 zope.interface==5.5.2
