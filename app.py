@@ -3,9 +3,11 @@
 import os
 import redis
 from flask import Flask, jsonify
+from flask_cors import CORS
 # from itertools import groupby
 
 app = Flask(__name__)
+CORS(app)
 
 REDIS_HOST = os.getenv("REDIS_HOST")
 REDIS_PORT = os.getenv("REDIS_PORT")
@@ -43,7 +45,7 @@ def get_products():
     # Procesar los resultados
     result_index = 0
     for store in product_stores:
-        store_products = []
+        # store_products = []
         i = 1
         while True:
             product_key = f"{store}:product:{i}"
@@ -51,17 +53,18 @@ def get_products():
                 product_data = results[result_index]
                 result_index += 1
 
-                store_products.append({
+                response_data.append({
                     'product_link': product_data.get('product_link', ''),
                     'product_name': product_data.get('product_name', ''),
                     'product_image': product_data.get('product_image', ''),
                     'product_available_label': product_data.get('product_available_label', ''),
-                    'product_price': product_data.get('product_price', '')
+                    'product_price': product_data.get('product_price', ''),
+                    'store_name':store
                 })
                 i += 1
             else:
                 break
-        response_data.append({store: store_products})
+        # response_data.append({store_products})
 
     return jsonify(response_data)
 
