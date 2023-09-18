@@ -30,7 +30,6 @@ h11==0.13.0
 hyperlink==21.0.0
 idna==3.3
 incremental==22.10.0
-ipython==8.14.0
 itemadapter==0.7.0
 itemloaders==1.0.6
 itsdangerous==2.1.2
