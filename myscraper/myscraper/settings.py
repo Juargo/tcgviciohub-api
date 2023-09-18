@@ -67,6 +67,7 @@ ROBOTSTXT_OBEY = True
 #}
 ITEM_PIPELINES = {
     'myscraper.pipelines.PriceNormalizationPipeline': 1,
+    'myscraper.pipelines.RedisPipeline': 2
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
